@@ -1,0 +1,3 @@
+@echo off
+echo Starte BalanceFlow...
+start javaw -jar "C:\Users\Christoph\CascadeProjects\test projekt java\BalanceFlow\target\BalanceFlow-1.0-SNAPSHOT.jar"

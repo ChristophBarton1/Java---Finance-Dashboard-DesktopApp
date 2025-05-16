@@ -1,0 +1,335 @@
+/* Grundlegende Stile */
+* {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.main-container {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 5);
+    background-color: transparent;
+    border-radius: 15px;
+    /* Standard CSS has no direct equivalent for JavaFX effects */
+}
+
+/* Farben definieren */
+.root {
+    -fx-primary: #6C5CE7;
+    -fx-primary-light: #A29BFE;
+    -fx-secondary: #546DE5;
+    -fx-red: #FC5C65;
+    -fx-green: #26DE81;
+    -fx-orange: #FD9644;
+    -fx-dark: #2C3E50;
+    -fx-darker: #1E272E;
+    -fx-light-gray: #F1F2F6;
+    -fx-medium-gray: #DFE4EA;
+}
+
+/* Header-Bereich */
+.top-bar {
+    -fx-background-color: linear-gradient(to right, -fx-primary, -fx-secondary);
+    -fx-background-radius: 15 15 0 0;
+    -fx-alignment: center-left;
+}
+
+.app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.exit-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.exit-button:hover {
+    -fx-text-fill: -fx-red;
+}
+
+/* Seitennavigation */
+.side-bar {
+    -fx-background-color: -fx-darker;
+    -fx-spacing: 5;
+    -fx-padding: 10;
+    -fx-pref-width: 200px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 10 15;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button.active-nav {
+    -fx-background-color: -fx-primary;
+    -fx-effect: dropshadow(gaussian, rgba(108, 92, 231, 0.5), 8, 0, 0, 2);
+}
+
+.nav-button .graphic {
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-pref-width: 24px;
+    -fx-pref-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+/* Icon-Platzhalter (in einer echten App würden wir hier SVGs oder Bilder verwenden) */
+.dashboard-icon {
+    -fx-shape: "M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z";
+    -fx-background-color: white;
+}
+
+.transactions-icon {
+    -fx-shape: "M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z";
+    -fx-background-color: white;
+}
+
+.budgets-icon {
+    -fx-shape: "M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z";
+    -fx-background-color: white;
+}
+
+.settings-icon {
+    -fx-shape: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z";
+    -fx-background-color: white;
+}
+
+/* Hauptinhaltsbereich */
+.content-area {
+    -fx-background-color: -fx-dark;
+    -fx-background-radius: 0 0 15 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.content-area .viewport {
+    -fx-background-color: transparent;
+}
+
+.content-area .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.content-area .scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 10;
+}
+
+.dashboard-content {
+    -fx-background-color: transparent;
+}
+
+/* Zusammenfassungskarten */
+.summary-cards {
+    -fx-alignment: center;
+}
+
+.summary-card {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 12;
+    -fx-padding: 15;
+    -fx-alignment: center-left;
+    -fx-min-width: 180px;
+    -fx-max-width: 300px;
+    -fx-pref-width: 220px;
+    -fx-spacing: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.income-card {
+    -fx-border-color: transparent transparent transparent -fx-green;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-radius: 12;
+}
+
+.expense-card {
+    -fx-border-color: transparent transparent transparent -fx-red;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-radius: 12;
+}
+
+.balance-card {
+    -fx-border-color: transparent transparent transparent -fx-primary;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-radius: 12;
+}
+
+.card-title {
+    -fx-text-fill: -fx-light-gray;
+    -fx-font-size: 14px;
+}
+
+.money-amount {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.comparison-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-medium-gray;
+}
+
+.comparison-text.positive {
+    -fx-text-fill: -fx-green;
+}
+
+.comparison-text.negative {
+    -fx-text-fill: -fx-red;
+}
+
+/* Diagrammbereich */
+.chart-container {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-padding: 15;
+    -fx-background-radius: 12;
+    -fx-spacing: 15;
+}
+
+.section-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.chart-placeholder {
+    -fx-background-color: linear-gradient(to bottom right, -fx-primary-light, -fx-primary);
+    -fx-opacity: 0.3;
+    -fx-background-radius: 8;
+    -fx-min-height: 180px;
+    -fx-pref-height: 200px;
+    -fx-max-height: 250px;
+}
+
+/* Budgetfortschritte */
+.budget-progress-container {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-padding: 15;
+    -fx-background-radius: 12;
+}
+
+.progress-item {
+    -fx-spacing: 5;
+}
+
+.progress-title {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.progress-amount {
+    -fx-text-fill: -fx-medium-gray;
+    -fx-font-size: 12px;
+}
+
+.progress-bar {
+    -fx-pref-height: 8px;
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 4;
+    -fx-padding: 0;
+}
+
+.progress-bar > .bar {
+    -fx-background-radius: 4;
+    -fx-background-insets: 0;
+}
+
+.food-progress > .bar {
+    -fx-background-color: -fx-green;
+}
+
+.housing-progress > .bar {
+    -fx-background-color: -fx-primary;
+}
+
+.entertainment-progress > .bar {
+    -fx-background-color: -fx-orange;
+}
+
+/* Transaktionsliste */
+.recent-transactions {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-padding: 15;
+    -fx-background-radius: 12;
+}
+
+.transaction-item {
+    -fx-background-color: rgba(255, 255, 255, 0.02);
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-spacing: 12;
+    -fx-alignment: center-left;
+}
+
+.transaction-icon {
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-pref-width: 36px;
+    -fx-pref-height: 36px;
+    -fx-max-width: 36px;
+    -fx-max-height: 36px;
+    -fx-background-radius: 18;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.transaction-icon.shopping {
+    -fx-background-color: rgba(253, 150, 68, 0.2);
+    -fx-border-color: -fx-orange;
+    -fx-border-radius: 18;
+    -fx-border-width: 2;
+}
+
+.transaction-icon.salary {
+    -fx-background-color: rgba(38, 222, 129, 0.2);
+    -fx-border-color: -fx-green;
+    -fx-border-radius: 18;
+    -fx-border-width: 2;
+}
+
+.transaction-icon.bill {
+    -fx-background-color: rgba(252, 92, 101, 0.2);
+    -fx-border-color: -fx-red;
+    -fx-border-radius: 18;
+    -fx-border-width: 2;
+}
+
+.transaction-title {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.transaction-category {
+    -fx-text-fill: -fx-medium-gray;
+    -fx-font-size: 12px;
+}
+
+.transaction-amount {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.transaction-amount.income {
+    -fx-text-fill: -fx-green;
+}
+
+.transaction-amount.expense {
+    -fx-text-fill: -fx-red;
+}

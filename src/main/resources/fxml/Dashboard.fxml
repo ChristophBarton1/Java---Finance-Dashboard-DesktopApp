@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.balanceflow.controllers.DashboardController"
+            stylesheets="/css/style.css"
+            styleClass="main-container">
+    
+    <!-- Top Header Bar mit App-Name und Exit-Button -->
+    <top>
+        <HBox styleClass="top-bar">
+            <Label text="BalanceFlow" styleClass="app-title"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="✕" styleClass="exit-button" onAction="#handleExit"/>
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+        </HBox>
+    </top>
+    
+    <!-- Linke Seitenleiste für die Navigation -->
+    <left>
+        <VBox styleClass="side-bar">
+            <Button styleClass="nav-button, active-nav" text="Dashboard" onAction="#showDashboard">
+                <graphic>
+                    <Region styleClass="dashboard-icon"/>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-button" text="Transaktionen" onAction="#showTransactions">
+                <graphic>
+                    <Region styleClass="transactions-icon"/>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-button" text="Budgets" onAction="#showBudgets">
+                <graphic>
+                    <Region styleClass="budgets-icon"/>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-button" text="Einstellungen" onAction="#showSettings">
+                <graphic>
+                    <Region styleClass="settings-icon"/>
+                </graphic>
+            </Button>
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+    
+    <!-- Hauptinhalt - Dashboard-Bereich -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="content-area">
+            <VBox spacing="20" styleClass="dashboard-content">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                
+                <!-- Zusammenfassungskarten -->
+                <HBox fx:id="summaryCards" spacing="15" styleClass="summary-cards">
+                    <VBox styleClass="summary-card, income-card">
+                        <Label text="Einkommen" styleClass="card-title"/>
+                        <Label fx:id="incomeAmount" text="€0,00" styleClass="money-amount"/>
+                        <Label text="↑ 12% vs. letzten Monat" styleClass="comparison-text, positive"/>
+                    </VBox>
+                    <VBox styleClass="summary-card, expense-card">
+                        <Label text="Ausgaben" styleClass="card-title"/>
+                        <Label fx:id="expenseAmount" text="€0,00" styleClass="money-amount"/>
+                        <Label text="↓ 5% vs. letzten Monat" styleClass="comparison-text, negative"/>
+                    </VBox>
+                    <VBox styleClass="summary-card, balance-card">
+                        <Label text="Saldo" styleClass="card-title"/>
+                        <Label fx:id="balanceAmount" text="€0,00" styleClass="money-amount"/>
+                        <Label text="↑ 18% vs. letzten Monat" styleClass="comparison-text, positive"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Diagrammbereich -->
+                <VBox fx:id="chartContainer" styleClass="chart-container">
+                    <Label text="Monatliche Übersicht" styleClass="section-title"/>
+                    <Region fx:id="chartPlaceholder" styleClass="chart-placeholder"/>
+                </VBox>
+                
+                <!-- Budgetfortschritte -->
+                <VBox fx:id="budgetProgressContainer" spacing="15" styleClass="budget-progress-container">
+                    <Label text="Budget-Fortschritt" styleClass="section-title"/>
+                    
+                    <VBox styleClass="progress-item">
+                        <HBox>
+                            <Label text="Lebensmittel" styleClass="progress-title"/>
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="€350 / €500" styleClass="progress-amount"/>
+                        </HBox>
+                        <ProgressBar fx:id="foodProgress" progress="0" styleClass="food-progress"/>
+                    </VBox>
+                    
+                    <VBox styleClass="progress-item">
+                        <HBox>
+                            <Label text="Wohnung" styleClass="progress-title"/>
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="€800 / €800" styleClass="progress-amount"/>
+                        </HBox>
+                        <ProgressBar fx:id="housingProgress" progress="0" styleClass="housing-progress"/>
+                    </VBox>
+                    
+                    <VBox styleClass="progress-item">
+                        <HBox>
+                            <Label text="Unterhaltung" styleClass="progress-title"/>
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="€120 / €200" styleClass="progress-amount"/>
+                        </HBox>
+                        <ProgressBar fx:id="entertainmentProgress" progress="0" styleClass="entertainment-progress"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Aktuelle Transaktionen -->
+                <VBox fx:id="recentTransactions" spacing="10" styleClass="recent-transactions">
+                    <Label text="Aktuelle Transaktionen" styleClass="section-title"/>
+                    
+                    <HBox styleClass="transaction-item">
+                        <Region styleClass="transaction-icon, shopping"/>
+                        <VBox>
+                            <Label text="REWE" styleClass="transaction-title"/>
+                            <Label text="Lebensmittel" styleClass="transaction-category"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label text="- €78,25" styleClass="transaction-amount, expense"/>
+                    </HBox>
+                    
+                    <HBox styleClass="transaction-item">
+                        <Region styleClass="transaction-icon, salary"/>
+                        <VBox>
+                            <Label text="Gehalt" styleClass="transaction-title"/>
+                            <Label text="Einkommen" styleClass="transaction-category"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label text="+ €2.560,00" styleClass="transaction-amount, income"/>
+                    </HBox>
+                    
+                    <HBox styleClass="transaction-item">
+                        <Region styleClass="transaction-icon, bill"/>
+                        <VBox>
+                            <Label text="Stadtwerke" styleClass="transaction-title"/>
+                            <Label text="Nebenkosten" styleClass="transaction-category"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label text="- €195,50" styleClass="transaction-amount, expense"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
