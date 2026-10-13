@@ -20,7 +20,7 @@ chart, budget progress bars and a recent-transactions list, all inside a framele
 dark-themed window. The current version is a **UI prototype driven by sample data**; it showcases
 JavaFX layout, styling and animation work rather than a finished bookkeeping backend.
 
-## ✨ Features
+## Features
 
 - **Summary cards**: income, expenses and balance with an animated count-up effect and month-over-month indicators.
 - **Monthly overview chart**: a JavaFX `AreaChart` with gradient fills comparing income and expenses across the month.
@@ -32,7 +32,7 @@ JavaFX layout, styling and animation work rather than a finished bookkeeping bac
 
 > The UI labels are currently in German (e.g. *Einkommen*, *Ausgaben*, *Saldo*).
 
-## 🧱 Tech stack
+## Tech stack
 
 | Area | Choice |
 | --- | --- |
@@ -42,7 +42,7 @@ JavaFX layout, styling and animation work rather than a finished bookkeeping bac
 | Build | Maven, `javafx-maven-plugin`, `maven-assembly-plugin` (jar-with-dependencies) |
 | Declared for upcoming work | H2 (local persistence), MaterialFX, JFreeChart |
 
-## 🏗️ How it works
+## How it works
 
 The app follows a simple **FXML + controller** structure:
 
@@ -52,7 +52,7 @@ The app follows a simple **FXML + controller** structure:
 - `ChartGenerator` builds and styles the monthly income/expense `AreaChart`.
 - `Transaction` is the domain model for future data-driven views.
 
-## 🚀 Getting started
+## Getting started
 
 **Prerequisites:** JDK 17+ and Maven.
 
@@ -69,7 +69,7 @@ On Windows, `build-standalone-app.bat` and the `create-*-shortcut.ps1` scripts a
 creating a desktop shortcut. Some of the launcher `.bat` files contain machine-specific paths and may
 need adjusting before use.
 
-## 📁 Project structure
+## Project structure
 
 ```
 src/main/java/
@@ -87,7 +87,7 @@ src/main/resources/
 *.bat, *.ps1, *.vbs            Windows build/launch/shortcut helpers
 ```
 
-## 🗺️ Roadmap
+## Roadmap
 
 - Persist transactions and budgets locally with H2.
 - Make the Transactions, Budgets and Settings views functional (navigation currently stays on the dashboard).
